@@ -15,16 +15,16 @@ function App() {
     getMovies(FEATURED_API)
   }, [])
 
-  const getMovies = API => {
+  const getMovies = (API) => {
     fetch(API)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data)
         setMovies(data.results)
       })
   }
 
-  const handleOnSubmit = e => {
+  const handleOnSubmit = (e) => {
     e.preventDefault()
     if (searchTerm) {
       getMovies(SEARCH_API + searchTerm)
@@ -33,7 +33,7 @@ function App() {
     }
   }
 
-  const handleOnChange = e => {
+  const handleOnChange = (e) => {
     setSearchTerm(e.target.value)
   }
   return (
@@ -51,9 +51,8 @@ function App() {
       </header>
       <div className="movie-container">
         {movies.length > 0 &&
-          movies.map(movie => <Movie key={movie.id} {...movie} />)}
+          movies.map((movie) => <Movie key={movie.id} {...movie} />)}
       </div>
-      )
     </>
   )
 }
